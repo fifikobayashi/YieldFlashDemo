@@ -26,7 +26,7 @@ const func = async function ({ deployments, getNamedAccounts, getChainId }) {
   const { deployer } = await getNamedAccounts();
   const chainId = await getChainId()
 
-  if (chainId === '31337') { // buidlerevm's chainId
+  /* if (chainId === '31337') { // buidlerevm's chainId
     console.log('Local deployments not implemented')
     return
   } else {
@@ -34,9 +34,9 @@ const func = async function ({ deployments, getNamedAccounts, getChainId }) {
       from: deployer,
       deterministicDeployment: true,
       args: [fyDai[name][chainId]],
-    }
+    })
     console.log(`Deployed YieldFYDaiLender to ${lender.address}`);
-  }
+  } */
 };
 
 module.exports = func;

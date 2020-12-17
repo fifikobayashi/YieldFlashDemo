@@ -1,6 +1,6 @@
 {
-  "name": "fyDai-flash",
-  "version": "0.1.0",
+  "name": "fydai-flash",
+  "version": "0.1.1",
   "description": "Dai Flash Loans from YieldSpace pools",
   "main": "index.js",
   "author": "Alberto Cuesta Cañada",
