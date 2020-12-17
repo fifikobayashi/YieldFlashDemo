@@ -1,0 +1,65 @@
+{
+  "name": "fyDai-flash",
+  "version": "0.1.0",
+  "description": "Dai Flash Loans from YieldSpace pools",
+  "main": "index.js",
+  "author": "Alberto Cuesta Cañada",
+  "license": "GPL-3.0-or-later",
+  "engines": {
+    "node": ">= 14.0.0",
+    "npm": ">= 6.4.0",
+    "yarn": ">= 1.10.0"
+  },
+  "files": [
+    "/contracts/YieldDaiBorrower.sol"
+  ],
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart",
+    "contracts"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yieldprotocol/fyDai-flash.git"
+  },
+  "bugs": {
+    "url": "https://github.com/yieldprotocol/fyDai-flash/issues"
+  },
+  "homepage": "https://github.com/yieldprotocol/fyDai-flash",
+  "scripts": {
+    "build": "buidler compile",
+    "test": "buidler test test/*.ts",
+    "ganache": "./scripts/ganache.sh",
+    "deploy:ganache": "yarn ganache && truffle migrate",
+    "mainnet-ganache": "./scripts/mainnet-ganache.sh",
+    "coverage": "buidler coverage --network coverage --temp build --testfiles 'test/*.ts'",
+    "lint": "prettier ./test/**/*.ts --check",
+    "lint:ts": "prettier ./test/**/*.ts --write",
+    "lint:sol": "solhint -f table contracts/**/*.sol"
+  },
+  "devDependencies": {
+    "@nomiclabs/buidler": "^1.3.8",
+    "@nomiclabs/buidler-truffle5": "^1.3.4",
+    "@nomiclabs/buidler-web3": "^1.3.4",
+    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/test-helpers": "^0.5.6",
+    "@truffle/hdwallet-provider": "^1.0.40",
+    "@types/mocha": "^8.0.0",
+    "buidler-gas-reporter": "0.1.4-beta.4",
+    "buidler-deploy": "^0.6.0-beta.37",
+    "chai": "4.2.0",
+    "ethereumjs-util": "^7.0.3",
+    "ethers": "^5.0.7",
+    "ganache-time-traveler": "^1.0.14",
+    "mocha": "^7.1.0",
+    "prettier": "^2.0.5",
+    "solhint": "^3.2.0",
+    "solidity-coverage": "^0.7.9",
+    "truffle": "^5.1.39",
+    "truffle-flattener": "^1.5.0",
+    "truffle-typings": "^1.0.8",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.7"
+  }
+}
