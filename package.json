@@ -42,12 +42,12 @@
     "@nomiclabs/buidler": "^1.3.8",
     "@nomiclabs/buidler-truffle5": "^1.3.4",
     "@nomiclabs/buidler-web3": "^1.3.4",
-    "@openzeppelin/contracts": "^3.1.0",
+    "@openzeppelin/contracts": "^3.3.0",
     "@openzeppelin/test-helpers": "^0.5.6",
     "@truffle/hdwallet-provider": "^1.0.40",
     "@types/mocha": "^8.0.0",
-    "buidler-gas-reporter": "0.1.4-beta.4",
     "buidler-deploy": "^0.6.0-beta.37",
+    "buidler-gas-reporter": "0.1.4-beta.4",
     "chai": "4.2.0",
     "ethereumjs-util": "^7.0.3",
     "ethers": "^5.0.7",
@@ -61,5 +61,9 @@
     "truffle-typings": "^1.0.8",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "truffle-hdwallet-provider": "^1.0.17"
   }
 }

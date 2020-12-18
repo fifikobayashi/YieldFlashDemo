@@ -2,10 +2,10 @@
 pragma solidity ^0.6.10;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-import "../YieldDaiBorrower.sol";
+import "./YieldDaiBorrower.sol";
 
 
-contract YieldDaiBorrowerMock is YieldDaiBorrower {
+contract YieldFlashDemo is YieldDaiBorrower {
     IERC20 public immutable dai;
 
     address public sender;
@@ -24,6 +24,12 @@ contract YieldDaiBorrowerMock is YieldDaiBorrower {
         loanAmount = loanAmount_;
         fee = fee_;
         balance = dai.balanceOf(address(this));
+
+        /**
+        * Insert your mid flash logic here
+        * e.g. arbitrage, collateral swap, self liquidation, refinancing, exploit research
+        **/
+
         repayFlashLoan(loanAmount_, fee_);
     }
 }
