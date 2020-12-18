@@ -13,7 +13,7 @@ Some key attributes I've noticed include:
 ## Experienced Devs
 If you're an experienced dev simply head to https://docs.yield.is and should be pretty easy for you to work things out. Just make your contract inherit YieldDaiBorrower and then override the receiveLoan() function with your mid flash logic.
 
-## Less Experienced Devs
+## Junior Devs
 If you're not as experienced with all this flashiness, but would still like to try this out, detailed instructions below:
 
 ### Setup and Deployment
@@ -35,7 +35,7 @@ module.exports = function (deployer) {
   deployer.deploy(YieldFlashDemo, "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa");
 };
 ```
-5. By default, it simply flash mints fyDAI then swaps it for DAI from YieldSpace pools before repaying the amount+fee. If you want to do some fancy arbitrage, then you need to add that to the receiveLoan() function within the YieldFlashDemo contract, before the repayFlashLoan() function is called.
+5. By default, it simply flash mints fyDAI then swaps it for DAI from YieldSpace pools before repaying the amount+fee. If you want to do some fancy arbitrage with the temporarily acquired DAI, then you need to add that to the receiveLoan() function within the YieldFlashDemo contract, before the repayFlashLoan() function is called.
 ```
     /// @dev Override this function with your own logic. Make sure the contract holds `loanAmount` + `fee` Dai
     // and that `repayFlashLoan` is called.
