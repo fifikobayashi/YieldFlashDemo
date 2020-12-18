@@ -14,7 +14,7 @@ Some key attributes I've noticed include:
 If you're an experienced dev simply head to https://docs.yield.is and should be pretty easy for you to work things out. Just make your contract inherit YieldDaiBorrower and then override the receiveLoan() function with your mid flash logic.
 
 ## Less Experienced Devs
-If you're not as experienced, but would still like to try this out, detailed instructions below:
+If you're not as experienced with all this flashiness, but would still like to try this out, detailed instructions below:
 
 ### Setup and Deployment
 1. git clone this repo
@@ -29,19 +29,39 @@ npm install dotenv
 npm install --save truffle-hdwallet-provider
 ```
 3. sort out your .gitignore and .env
-4. update the first argument in truffle migration script to reflect which DAI you want to use e.g. for kovan DAI
+4. update the first argument in truffle migration script to reflect which DAI you want to use (see [docs.yield.is](https://docs.yield.is)) e.g. for kovan DAI
 ```
 module.exports = function (deployer) {
   deployer.deploy(YieldFlashDemo, "0x4F96Fe3b7A6Cf9725f59d353F723c1bDb64CA6Aa");
 };
 ```
-5. By default, it flash mints fyDAI then swaps it for DAI from YieldSpace pools. If you want to do some fancy arbitrage, then you need to add that to the receiveLoan() function within the YieldFlashDemo contract, before the repayFlashLoan() call.
+5. By default, it simply flash mints fyDAI then swaps it for DAI from YieldSpace pools before repaying the amount+fee. If you want to do some fancy arbitrage, then you need to add that to the receiveLoan() function within the YieldFlashDemo contract, before the repayFlashLoan() function is called.
+```
+    /// @dev Override this function with your own logic. Make sure the contract holds `loanAmount` + `fee` Dai
+    // and that `repayFlashLoan` is called.
+    function receiveLoan(address sender_, uint256 loanAmount_, uint256 fee_) internal override {
+        sender = sender_;
+        loanAmount = loanAmount_;
+        fee = fee_;
+        balance = dai.balanceOf(address(this));
+
+        /**
+        * Insert your mid flash logic here
+        * e.g. arbitrage, collateral swap, self liquidation, refinancing, exploit research
+        **/
+
+        repayFlashLoan(loanAmount_, fee_);
+    }
+}
+```
 6. Now let's deploy this contract
+```
 truffle migrate --network kovan --reset --skipDryRun
+```
 
 ### Execution
 7. Note the deployed contract address and send some DAI to it to cover the approx. 2.5 bps flash fee.
-8. Let's jump onto truffle console *rubs hands*
+8. Let's jump onto truffle console
 ```
 truffle console --network kovan
 ```
