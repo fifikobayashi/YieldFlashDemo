@@ -2,6 +2,8 @@
 
 I recently tried out [Alberto Cuesta Canada](https://twitter.com/acuestacanada)'s Flash Mint powered Flash Loan offering from the Yield Protocol, so here's a template contract you can play customise.
 
+This flash loan basically flash mints fyDAI and then swaps it into DAI for your contract's use via YieldSpace pools.
+
 Some key attributes I've noticed include:
 - the use of ERC-3156 wrappers to provide a standardized fyDai and Dai flash lending interfaces to fyDai and Pool contracts.
 - the YieldDaiBorrower contract which you inherit from, flash mints fyDAI and then uses it to borrow Dai from YieldSpace pools, which is like a normal AMM but the invariant takes a time to maturity parameter.
@@ -9,7 +11,7 @@ Some key attributes I've noticed include:
 - the flash fee is roughly 2.5 bps, but can change subject to time-to-maturity and loan-to-reserves ratio.
 
 ## Experienced Devs
-If you're an experienced dev simply head to https://docs.yield.is and should be pretty straightforward for you. Just make your contract inherit YieldDaiBorrower and then override the receiveLoan() function with your mid flash logic.
+If you're an experienced dev simply head to https://docs.yield.is and should be pretty easy for you to work things out. Just make your contract inherit YieldDaiBorrower and then override the receiveLoan() function with your mid flash logic.
 
 ## Less Experienced Devs
 If you're not as experienced, but would still like to try this out, detailed instructions below:
