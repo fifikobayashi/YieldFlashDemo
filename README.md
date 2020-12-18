@@ -1,6 +1,6 @@
 # Yield Flash-Mint-Powered Flash Loan
 
-I recently tried out [Alberto Cuesta Canada](https://twitter.com/acuestacanada)'s Flash Mint powered Flash Loan offering from the Yield Protocol, so here's a template contract you can play customise.
+I recently tried out [Alberto Cuesta Canada](https://twitter.com/acuestacanada)'s Flash Mint powered Flash Loan offering from the Yield Protocol, so here's a template contract you can play and customise.
 
 This flash loan basically flash mints fyDAI and then swaps it into DAI for your contract's use via YieldSpace pools.
 
